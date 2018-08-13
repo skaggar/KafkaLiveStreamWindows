@@ -4,13 +4,14 @@ import os
 import time
 import sys
 
-c = KafkaConsumer('meta10', bootstrap_servers=['130.127.55.239:9092'], group_id="my_group")
+#c = KafkaConsumer('meta10', bootstrap_servers=['130.127.55.239:9092'], group_id="my_group")
+c = KafkaConsumer('meta', bootstrap_servers=['130.127.48.181:9092'], group_id="my_group")
 #c=KafkaConsumer(consumer_timeout_ms=1000)
 running = True
 num=0
 topics=[]
 detect=0
-dirt= 'D:\\Kafka'
+dirt= os.getcwd()
 metafile="MetaConsumer.txt"
 '''
 meta=os.path.join(dirt,metafile)
@@ -58,6 +59,8 @@ if not (os.path.exists(dirt)):
 #c.close()
 '''
 meta=os.path.join(dirt,metafile)
+fh=open(meta,"w")
+fh.close()
 fh=open(meta,"r")
 count=fh.readline()
 count=count.rstrip()

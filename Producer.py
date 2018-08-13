@@ -3,10 +3,11 @@ from kafka import KafkaProducer
 import base64
 import os
 import shutil
-
-dirt = "D:\\Kafka\EP-01-07728_0016"
+dirt=os.getcwd();
+dirt = dirt+"/"+"EP-01-07728_0016"
 #dirtfolder='/home/sid/Documents/'
-p=KafkaProducer(bootstrap_servers='130.127.55.239:9092')
+#p=KafkaProducer(bootstrap_servers='130.127.55.239:9092')
+p=KafkaProducer(bootstrap_servers='130.127.48.181:9092')
 listoffiles=os.listdir(dirt)
 number_files=len(listoffiles)
 print(number_files)
@@ -65,13 +66,13 @@ while 1:
 f.close()
 '''image=open(fileloc,'rb')
         size=os.path.getsize(fileloc)
-	size10kb=size/102400
+	size10kb=size/10240
 	while j<size10kb:
 		image.seek(i,0)
-		image_read=image.read(102400)
+		image_read=image.read(10240)
 		image_64_encode=base64.encodestring(image_read)
 		p.send(topic, image_64_encode)
-		i+=102400
+		i+=10240
 		j+=1
 '''
 
